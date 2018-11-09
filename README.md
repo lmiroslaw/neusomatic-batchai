@@ -12,46 +12,64 @@ Job setup is described in jobneu.json
 Prior the training phase install.sh script is executed on every node
 
 ## Setup variables
+```
 rgname = hpc-roche-batchai
 wsname = neusomatic_)workspace
 storaccname=neusomaticstorage
 expname=pytorch_experiment
+```
 
 ## Create BatchAI workspace
+```
 az group create -n $rgname -l westeurope
 az batchai workspace create -g $rgname -n $wsname -l westeurope
+```
 
 ## Create a computing cluster
+```
 clustername=nc6
 az batchai cluster create -n $clustername -g $rgname -w $wsname -s Standard_NC6 -t 2 --generate-ssh-keys
+```
 
 ## Setup the storage account 
+```
 az storage account create -n $storaccname --sku Standard_LRS -g $rgname
 az storage share create -n logs --account-name $storaccname
 az storage share create -n scripts --account-name $storaccname
 az storage share create -n data --account-name $storaccname
 az storage directory create -n datain -s data --account-name $storaccname
 az storage directory create -n dataout -s data --account-name $storaccname
+```
 
 ## Upload files 
+```
 az storage file upload -s scripts --source install.sh --path prep --account-name $storaccname
 az storage file upload-batch -s /mnt/bigdata/output_dir/standalone/dataset --pattern */candidates*.tsv* --destination data --account-name $storaccname
+```
 
 ## Create a job
+```
 jobname=n1
 az batchai job create -c $clustername -n $jobname -g $rgname -w $wsname -e $expname -f jobneu.json --storage-account-name $storaccname 
+```
 
 ## Monitor the execution
+```
 az batchai job file stream -j $jobname -g $rgname -w $wsname -e $expname -f stdout-0.txt
+```
 
 ## Job output
+```
 az batchai job show -n distributed_pytorch -g $rgname -w $wsname -e $expname --query jobOutputDirectoryPathSegment
+```
 
 ## Download the job results
 Results can be viewed with Azure Storage Explorer
 
 ## Delete the cluster
+```
 az batchai cluster delete -n $clustername -g $rgname -w $wsname
+```
 
 ## More information
 #[1] https://github.com/Azure/BatchAI/blob/master/recipes/PyTorch/PyTorch-GPU-Distributed-Gloo/cli-instructions.md
