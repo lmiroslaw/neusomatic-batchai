@@ -3,7 +3,7 @@
     "properties": {
         "nodeCount": 2,
         "pyTorchSettings": {
-            "pythonScriptFilePath": "$AZ_BATCHAI_JOB_TEMP_DIR/neusomatic/neusomatic/python/train.py", 
+            "pythonScriptFilePath": "time $AZ_BATCHAI_JOB_TEMP_DIR/neusomatic/neusomatic/python/train.py", 
             "commandLineArgs": "--candidates_tsv $AZ_BATCHAI_JOB_MOUNT_ROOT/data/*/candidates*.tsv --out $AZ_BATCHAI_JOB_MOUNT_ROOT/dataout --num_threads 16 --batch_size 100",
             "communicationBackend": "gloo" 
         },
