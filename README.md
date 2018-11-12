@@ -1,4 +1,4 @@
-# neusomatic-batchai
+# Neusomatic on Azure BatchAI
 Neusomatic with Azure BatchAI
 
 In this example preprocess.py script is executed on prem, the data are transfered to the cloud, and the training phase is executed with Azure BatchAI.
@@ -17,7 +17,6 @@ rgname = hpc-roche-batchai
 wsname = neusomatic_workspace
 storaccname=neusomaticstorage
 expname=pytorch_experiment
-clustername=nc6
 ```
 
 ## Create BatchAI workspace
