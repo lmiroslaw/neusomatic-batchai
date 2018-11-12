@@ -11,6 +11,12 @@ bash ~/miniconda.sh -b -p $HOME/miniconda
 
 export PATH="$HOME/miniconda/bin:$PATH"
 
+#GPU-based execution
+CUDA_VISIBLE_DEVICES=0
+
+#CPU-based execution
+#CUDA_VISIBLE_DEVICES=
+
 #echo "export PATH=\"$HOME/miniconda/bin:$PATH\" >> ~/.bashrc"
 source ~/.bashrc
  
