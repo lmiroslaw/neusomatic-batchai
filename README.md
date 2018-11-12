@@ -17,6 +17,7 @@ rgname = hpc-roche-batchai
 wsname = neusomatic_workspace
 storaccname=neusomaticstorage
 expname=pytorch_experiment
+clustername=nc6
 ```
 
 ## Create BatchAI workspace
