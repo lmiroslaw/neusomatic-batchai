@@ -4,8 +4,8 @@ Neusomatic with Azure BatchAI
 In this example preprocess.py script is executed on prem, the data are transfered to the cloud, and the training phase is executed with Azure BatchAI.
 
 Directory structure:
--dataout/models blob container contains the pretrained models
--file share data contains the input files for the training: candidates
+- dataout/models blob container contains the pretrained models
+- file share data contains the input files for the training: candidates
 
 Job setup is described in jobneu.json
 
