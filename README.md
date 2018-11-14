@@ -72,4 +72,5 @@ az batchai cluster delete -n $clustername -g $rgname -w $wsname
 ```
 
 ## More information
-#[1] https://github.com/Azure/BatchAI/blob/master/recipes/PyTorch/PyTorch-GPU-Distributed-Gloo/cli-instructions.md
+- [1] https://github.com/Azure/BatchAI/blob/master/recipes/PyTorch/PyTorch-GPU-Distributed-Gloo/cli-instructions.md
+- [2] https://docs.microsoft.com/en-us/azure/batch-ai/
