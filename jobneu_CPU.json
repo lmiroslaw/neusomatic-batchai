@@ -4,7 +4,7 @@
         "nodeCount": 2,
         "pyTorchSettings": {
             "pythonScriptFilePath": "$AZ_BATCHAI_JOB_TEMP_DIR/neusomatic/neusomatic/python/train.py", 
-            "commandLineArgs": "--candidates_tsv $AZ_BATCHAI_JOB_MOUNT_ROOT/data/*/candidates*.tsv --out $AZ_BATCHAI_JOB_MOUNT_ROOT/dataout --num_threads 16 --batch_size 100",
+            "commandLineArgs": "--candidates_tsv $AZ_BATCHAI_JOB_MOUNT_ROOT/data/*/candidates*.tsv --out $AZ_BATCHAI_JOB_MOUNT_ROOT/dataout --num_threads 16 --batch_size 1000",
             "communicationBackend": "gloo" 
         },
         "stdOutErrPathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
@@ -45,7 +45,7 @@
             ]
         },
 	"jobPreparation": {
-	"commandLine": "echo $AZ_BATCHAI_JOB_TEMP; echo AZ_BATCHAI_JOB_TEMP_DIR; bash $AZ_BATCHAI_JOB_MOUNT_ROOT/scripts/prep/install.sh"
+	"commandLine": "echo CPU; echo CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES; bash $AZ_BATCHAI_JOB_MOUNT_ROOT/scripts/prep/install_CPU.sh"
         },
         "containerSettings": {
             "imageSourceRegistry": {
