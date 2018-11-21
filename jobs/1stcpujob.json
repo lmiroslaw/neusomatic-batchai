@@ -1,0 +1,56 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/BatchAI/master/schemas/2018-05-01/job.json",
+    "properties": {
+        "nodeCount": 2,
+        "pyTorchSettings": {
+            "pythonScriptFilePath": "$AZ_BATCHAI_JOB_TEMP_DIR/neusomatic/neusomatic/python/train.py", 
+            "commandLineArgs": "--candidates_tsv $AZ_BATCHAI_JOB_MOUNT_ROOT/data/*/candidates*.tsv --out $AZ_BATCHAI_JOB_MOUNT_ROOT/dataout --num_threads 6 --batch_size 1000",
+            "communicationBackend": "gloo" 
+        },
+        "stdOutErrPathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
+        "mountVolumes": {
+            "azureFileShares": [
+                {
+                    "azureFileUrl": "https://<AZURE_BATCHAI_STORAGE_ACCOUNT>.file.core.windows.net/logs",
+                    "relativeMountPath": "logs"
+                },
+                {
+                    "azureFileUrl": "https://<AZURE_BATCHAI_STORAGE_ACCOUNT>.file.core.windows.net/scripts",
+                    "relativeMountPath": "scripts"
+                },
+
+                {
+                    "azureFileUrl": "https://<AZURE_BATCHAI_STORAGE_ACCOUNT>.file.core.windows.net/data",
+                    "relativeMountPath": "data"
+                }
+            ],
+		"azureBlobFileSystems": [
+
+                {
+
+                    "accountName": "<AZURE_BATCHAI_STORAGE_ACCOUNT>",
+                    "containerName": "datain",
+                    "relativeMountPath": "datain"
+
+                },
+		 {
+
+                    "accountName": "<AZURE_BATCHAI_STORAGE_ACCOUNT>",
+                    "containerName": "dataout",
+                    "relativeMountPath": "dataout"
+
+                }
+
+
+            ]
+        },
+	"jobPreparation": {
+	"commandLine": "source $AZ_BATCHAI_JOB_MOUNT_ROOT/scripts/prep/install.sh cpu"
+        },
+        "containerSettings": {
+            "imageSourceRegistry": {
+                "image": "pytorch/pytorch:0.4_cuda9_cudnn7"
+            }
+        }
+    }
+}
