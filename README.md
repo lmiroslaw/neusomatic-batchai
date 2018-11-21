@@ -13,7 +13,7 @@ Prior the training phase install.sh script is executed on every node
 
 ## Setup variables
 ```
-rgname = hpc-roche-batchai
+rgname = hpc-batchai
 wsname = neusomatic_workspace
 storaccname=neusomaticstorage
 expname=pytorch_experiment
