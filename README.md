@@ -1,15 +1,17 @@
 # Neusomatic on Azure BatchAI
 Neusomatic with Azure BatchAI
 
-In this example preprocess.py script is executed on prem, the data are transfered to the cloud, and the training phase is executed with Azure BatchAI.
+In this example 'preprocess.py' script is executed on prem, the data are transfered to the cloud with 'upload_data.sh', and the training phase is executed with Azure BatchAI.
 
 Directory structure:
 - dataout/models blob container contains the pretrained models
-- file share data contains the input files for the training: candidates
+- file share data contains the input files for the training (artificial case)
+- file share test contains the input files for the training (AJT case)
 
-Job setup is described in jobneu.json
+Job setup is described in 1stgpujob.json
 
-Prior the training phase install.sh script is executed on every node
+Prior the training phase install_stable.sh script is executed on every node.
+install.sh contains the possible optimizations.
 
 ## Setup variables
 ```
