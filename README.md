@@ -39,6 +39,7 @@ az storage account create -n $storaccname --sku Standard_LRS -g $rgname
 az storage share create -n logs --account-name $storaccname
 az storage share create -n scripts --account-name $storaccname
 az storage share create -n data --account-name $storaccname
+az storage directory create -n dataout -s data --account-name $storaccname
 ```
 
 ## Upload files 
