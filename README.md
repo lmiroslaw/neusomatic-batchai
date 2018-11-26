@@ -51,7 +51,7 @@ az storage file upload-batch -s /mnt/bigdata/output_dir/standalone/dataset --pat
 ## Create a job
 ```
 jobname=n1
-az batchai job create -c $clustername -n $jobname -g $rgname -w $wsname -e $expname -f jobneu.json --storage-account-name $storaccname 
+az batchai job create -c $clustername -n $jobname -g $rgname -w $wsname -e $expname -f 1stgpujob.json --storage-account-name $storaccname 
 ```
 
 ## Monitor the execution
