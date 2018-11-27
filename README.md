@@ -1,3 +1,4 @@
+
 # Neusomatic on Azure BatchAI
 Neusomatic with Azure BatchAI
 
@@ -27,6 +28,11 @@ az group create -n $rgname -l westeurope
 az batchai workspace create -g $rgname -n $wsname -l westeurope
 ```
 
+## Create BatchAI experiment
+```
+az batchai experiment create -g $rgname -n $expname -l westeurope -
+```
+
 ## Create a computing cluster
 ```
 clustername=nc6
@@ -39,6 +45,7 @@ az storage account create -n $storaccname --sku Standard_LRS -g $rgname
 az storage share create -n logs --account-name $storaccname
 az storage share create -n scripts --account-name $storaccname
 az storage share create -n data --account-name $storaccname
+az storage share create -n test --account-name $storaccname
 az storage directory create -n dataout -s data --account-name $storaccname
 ```
 
